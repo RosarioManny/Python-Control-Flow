@@ -166,9 +166,24 @@ def weather_advice():
 # - Ensure to validate input formats and handle unexpected inputs gracefully.
 
 def determine_season():
-   month = input("Enter the month of the year (Jan - Dec): ").lower()
-   day = int(input("Enter the day of the month: "))
-   season = "Spring" 
-   print(f'{month} {day} is in {season}')
+    month = input("Enter the month of the year (Jan - Dec): ").lower()
+    day = int(input("Enter the day of the month: "))
+    season = ""
+
+    if (month == "dec" and day >= 21) or month in ["jan", "feb"] or (month == "mar" and day <= 19):
+        season = "Winter"
+    elif (month == "mar" and day >= 20) or month in ["apr", "may"] or (month == "jun" and day <= 20):
+        season = "Spring"
+    elif (month == "jun" and day >= 21) or month in ["jul", "aug"] or (month == "sep" and day <= 21):
+        season = "Summer"
+    elif (month == "sep" and day >= 22) or month in ["oct", "nov"] or (month == "dec" and day <= 20):
+        season = "Fall"
+    else:
+        season = "Invalid date"
+
+    print(f'{month.capitalize()} {day} is in {season}')
+
 determine_season()
+
+
 
